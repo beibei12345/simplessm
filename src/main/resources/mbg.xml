@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+    <!--简单版本：targetRuntime="MyBatis3Simple"  完整版本targetRuntime="MyBatis3"-->
+    <context id="DB2Tables" targetRuntime="MyBatis3Simple">
+
+        <!--注释生成策略-->
+        <commentGenerator>
+            <property name="suppressAllComments" value="true" />
+        </commentGenerator>
+
+        <!--jdbcConnection配置数据库连接信息-->
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://localhost:3306/mybatis"
+                        userId="root"
+                        password="123456">
+        </jdbcConnection>
+
+        <!--java类型解析器-->
+        <javaTypeResolver >
+            <property name="forceBigDecimals" value="false" />
+        </javaTypeResolver>
+
+
+        <!--javaModelGenerator配置javaBean的生成策略-->
+        <javaModelGenerator targetPackage="com.beibeixyzxyz.simplessm.pojo" targetProject=".\src\generated">
+            <property name="enableSubPackages" value="true" />
+            <property name="trimStrings" value="true" />
+        </javaModelGenerator>
+
+
+        <!--sqlMapGenerator配置sql映射文件生成策略-->
+        <sqlMapGenerator targetPackage="com.beibeixyzxyz.simplessm.dao" targetProject=".\src\generated">
+            <property name="enableSubPackages" value="true" />
+        </sqlMapGenerator>
+
+        <!--javaClientGenerator配置Mapper接口的生成策略-->
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.beibeixyzxyz.simplessm.dao" targetProject=".\src\generated">
+            <property name="enableSubPackages" value="true" />
+        </javaClientGenerator>
+
+        <table schema="DB2ADMIN" tableName="tbl_dept" domainObjectName="Department" />
+        <table schema="DB2ADMIN" tableName="tbl_employee" domainObjectName="Employee" />
+
+    </context>
+</generatorConfiguration>
